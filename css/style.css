@@ -7,100 +7,107 @@ body {
   color: #1f1f1f;
 }
 
-.page, .home {
+.page {
   padding: 16px;
 }
 
-.container, .home {
-  max-width: 760px;
+.container {
+  max-width: 720px;
   margin: 0 auto;
+}
+
+/* BLOCS */
+
+.section {
+  margin-bottom: 28px;
 }
 
 .card {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  margin-bottom: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
+
+/* HERO */
 
 .hero {
   background: transparent;
   box-shadow: none;
   padding: 0;
-  margin-bottom: 16px;
 }
 
 .hero-copy {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .hero-image {
   width: 100%;
   overflow: hidden;
-  background: transparent;
 }
 
 .hero-image img {
   width: 100%;
   max-width: 520px;
-  height: auto;
   display: block;
-  margin: 0 auto -22%;
+  margin: 0 auto -20%;
 }
 
-.eyebrow {
-  margin: 0 0 8px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #7b6f5d;
-}
+/* TEXTES */
 
 h1 {
+  font-size: 1.9rem;
   margin: 0 0 8px;
-  font-size: 2rem;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 h2 {
-  margin: 0 0 12px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
 }
 
 h3 {
-  margin: 0 0 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  color: #7b6f5d;
 }
 
 p {
-  margin: 0 0 12px;
   line-height: 1.55;
+  margin-bottom: 14px;
 }
 
 .mini {
-  font-size: 1rem;
   color: #50493f;
+  margin-bottom: 10px;
+}
+
+/* JAUGES */
+
+.gauge-wrap {
+  margin-bottom: 18px;
 }
 
 .gauge-labels {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  font-size: 0.92rem;
-  color: #5b5448;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6a6154;
+  margin-bottom: 6px;
 }
 
 .gauge {
   position: relative;
-  height: 30px;
-  margin-bottom: 12px;
+  height: 20px;
+  margin-bottom: 8px;
 }
 
 .gauge-track {
   position: absolute;
-  top: 11px;
+  top: 6px;
   left: 0;
   right: 0;
   height: 8px;
@@ -110,28 +117,26 @@ p {
 
 .gauge-marker {
   position: absolute;
-  top: 4px;
+  top: 1px;
   width: 18px;
-  height: 22px;
-  border-radius: 8px;
+  height: 18px;
+  border-radius: 6px;
   background: #ffffff;
   border: 2px solid #2f2a24;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
+
+/* REPÈRES */
 
 .repere {
-  padding: 12px 0;
-  border-top: 1px solid #ece7de;
-}
-
-.repere:first-of-type {
-  border-top: none;
-  padding-top: 0;
+  margin-bottom: 18px;
 }
 
 .repere-value {
   font-weight: 700;
+  margin-bottom: 6px;
 }
+
+/* SKILLS */
 
 .skills {
   display: flex;
@@ -142,9 +147,11 @@ p {
 .skills span {
   background: #f6ead9;
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   font-weight: 700;
 }
+
+/* VIDEOS */
 
 .videos {
   display: grid;
@@ -153,74 +160,15 @@ p {
 
 iframe {
   width: 100%;
-  min-height: 220px;
+  min-height: 200px;
+  border-radius: 14px;
   border: 0;
-  border-radius: 16px;
-  background: #ddd;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 16px;
-  border-radius: 999px;
-  background: #2f2a24;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-}
+/* DESKTOP */
 
-@media (max-width: 699px) {
+@media (min-width: 700px) {
   .hero-image img {
-    max-width: 100%;
-    margin: 0 auto -18%;
+    margin: 0 auto -28%;
   }
-
-
-.gauge-labels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #5b5448;
-}
-
-.gauge-labels span:first-child {
-  text-align: left;
-}
-
-.gauge-labels span:last-child {
-  text-align: right;
-}
-
-.gauge {
-  position: relative;
-  height: 18px;
-  margin-bottom: 14px;
-}
-
-.gauge-track {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  right: 0;
-  height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #d9d2c4 0%, #f0b35b 50%, #e07a5f 100%);
-}
-
-.gauge-marker {
-  position: absolute;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 6px;
-  background: #ffffff;
-  border: 2px solid #2f2a24;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-  
 }
