@@ -29,12 +29,23 @@ body {
   gap: 16px;
 }
 
+.hero-image {
+  min-height: 420px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f7f4ee 0%, #f3efe7 100%);
+  overflow: hidden;
+  padding: 16px 16px 0 16px;
+}
+
 .hero-image img {
   width: 100%;
-  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: top center;
   display: block;
-  border-radius: 16px;
-  background: #f7f7f7;
 }
 
 .eyebrow {
