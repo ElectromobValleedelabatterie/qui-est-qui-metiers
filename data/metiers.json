@@ -1,0 +1,31 @@
+[
+  {
+    "METIER": "Ingénieur·e recherche et développement",
+    "INDIVIDUEL": 5,
+    "LIBRE": 3,
+    "ROUTINIER": 8,
+    "TERRAIN": 7,
+    "DIPLOME": "Bac+5",
+    "SALAIRE": 5,
+    "DEMANDE": 4,
+    "PENEBILITE": "Faible",
+    "QUALITE1": "Analyse",
+    "QUALITE2": "Persévérance",
+    "QUALITE3": "Curiosité",
+    "DESCRIPTION_METIER": "Concevoir les solutions de demain, c'est mon quotidien. Je ne travaille pas forcément sur un produit fini, mais sur les briques qui le rendent possible. Je teste, j'analyse, j'améliore en boucle. Je collabore avec des équipes variées pour transformer une hypothèse en solution concrète et industrialisable. Si tu aimes comprendre comment les choses fonctionnent — et les rendre meilleures — ce métier est fait pour toi.",
+    "EXPLICATION_INDIVIDUEL": "Je travaille souvent seul·e sur mes recherches, mais je collabore aussi beaucoup avec d'autres ingénieur·es et équipes.",
+    "EXPLICATION_LIBRE": "J'ai une grande liberté dans ma façon d'organiser mon travail et mes expérimentations — peu de procédures rigides.",
+    "EXPLICATION_ROUTINIER": "Chaque projet m'amène à explorer de nouveaux territoires : nouveaux matériaux, nouvelles techniques, nouvelles questions.",
+    "EXPLICATION_TERRAIN": "Je travaille surtout sur ordinateur et en laboratoire, avec moins de présence sur le terrain industriel.",
+    "EXPLICATION_DIPLOME": "Un master ou diplôme d'ingénieur·e est requis. Le chemin est long, mais les débouchés et la reconnaissance sont au rendez-vous.",
+    "EXPLICATION_SALAIRE": "L'un des métiers les mieux rémunérés de l'industrie, dès l'entrée en poste. Le niveau d'études est compensé rapidement.",
+    "EXPLICATION_DEMANDE": "Les entreprises industrielles des Hauts-de-France recrutent activement des profils R&D pour innover et rester compétitives.",
+    "EXPLICATION_PENEBILITE": "Travail en bureau ou laboratoire, horaires classiques. Le principal défi est intellectuel, pas physique.",
+    "SLUG": "ingenieur-rd",
+    "IMAGE": "ingenieur-rd.png",
+    "YOUTUBE1": "https://www.youtube.com/watch?v=h6lWA67vtGw",
+    "YOUTUBE2": "https://www.youtube.com/watch?v=2qSZgVbLekc",
+    "PROMPT_IMAGE": "",
+    "DESCRIPTION_MINI": "Je conçois et teste de nouveaux produits ou technologies avant leur fabrication industrielle."
+  }
+]
