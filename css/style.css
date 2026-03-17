@@ -37,7 +37,7 @@ body {
 .hero-image {
   position: relative;
   width: 100%;
-  padding-top: 58%;
+  padding-top: 38%;
   overflow: hidden;
 }
 
@@ -187,6 +187,12 @@ iframe {
   border-radius: 18px;
   background: rgba(244, 241, 234, 0.92);
   backdrop-filter: blur(4px);
+}
+
+@media (min-width: 700px) {
+  .hero-image {
+    padding-top: 58%;
+  }
 }
   
 }
