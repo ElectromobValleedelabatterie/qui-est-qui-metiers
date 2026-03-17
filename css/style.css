@@ -174,4 +174,53 @@ iframe {
     max-width: 100%;
     margin: 0 auto -18%;
   }
+
+
+.gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #5b5448;
+}
+
+.gauge-labels span:first-child {
+  text-align: left;
+}
+
+.gauge-labels span:last-child {
+  text-align: right;
+}
+
+.gauge {
+  position: relative;
+  height: 18px;
+  margin-bottom: 14px;
+}
+
+.gauge-track {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d9d2c4 0%, #f0b35b 50%, #e07a5f 100%);
+}
+
+.gauge-marker {
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 2px solid #2f2a24;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+  
 }
