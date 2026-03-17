@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Métier</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .mini {
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    img {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .bloc {
+      margin-bottom: 20px;
+    }
+
+    .jauge {
+      height: 6px;
+      background: #ddd;
+      position: relative;
+      margin: 8px 0;
+    }
+
+    .point {
+      width: 14px;
+      height: 14px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: -4px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+
+    fetch("data/metiers.json")
+      .then(res => res.json())
+      .then(data => {
+        const metier = data.find(m => m.SLUG === slug);
+
+        if (!metier) {
+          document.getElementById("app").innerHTML = "Métier non trouvé";
+          return;
+        }
+
+        function jauge(value) {
+          return `
+            <div class="jauge">
+              <div class="point" style="left:${value * 10}%"></div>
+            </div>
+          `;
+        }
+
+        document.getElementById("app").innerHTML = `
+          <h1>${metier.METIER}</h1>
+          <div class="mini">${metier.DESCRIPTION_MINI}</div>
+
+          <img src="assets/metiers/${metier.IMAGE}" />
+
+          <div class="bloc">
+            <p>${metier.DESCRIPTION_METIER}</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Travail individuel / collectif</h3>
+            ${jauge(metier.INDIVIDUEL)}
+            <p>${metier.EXPLICATION_INDIVIDUEL}</p>
+
+            <h3>Organisation libre / structurée</h3>
+            ${jauge(metier.LIBRE)}
+            <p>${metier.EXPLICATION_LIBRE}</p>
+
+            <h3>Routinier / nouveauté</h3>
+            ${jauge(metier.ROUTINIER)}
+            <p>${metier.EXPLICATION_ROUTINIER}</p>
+
+            <h3>Terrain / bureau</h3>
+            ${jauge(metier.TERRAIN)}
+            <p>${metier.EXPLICATION_TERRAIN}</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Repères</h3>
+            <p><strong>Diplôme :</strong> ${metier.DIPLOME}</p>
+            <p>${metier.EXPLICATION_DIPLOME}</p>
+
+            <p><strong>Salaire :</strong> ${metier.SALAIRE}/5</p>
+            <p>${metier.EXPLICATION_SALAIRE}</p>
+
+            <p><strong>Demande :</strong> ${metier.DEMANDE}/5</p>
+            <p>${metier.EXPLICATION_DEMANDE}</p>
+
+            <p><strong>Pénibilité :</strong> ${metier.PENEBILITE}</p>
+            <p>${metier.EXPLICATION_PENEBILITE}</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Qualités</h3>
+            <ul>
+              <li>${metier.QUALITE1}</li>
+              <li>${metier.QUALITE2}</li>
+              <li>${metier.QUALITE3}</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Vidéos</h3>
+            ${metier.YOUTUBE1 ? `<iframe src="https://www.youtube.com/embed/${metier.YOUTUBE1.split("v=")[1]}"></iframe>` : ""}
+            ${metier.YOUTUBE2 ? `<iframe src="https://www.youtube.com/embed/${metier.YOUTUBE2.split("v=")[1]}"></iframe>` : ""}
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
