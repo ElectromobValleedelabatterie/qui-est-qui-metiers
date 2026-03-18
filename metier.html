@@ -6,10 +6,9 @@
   <title>Fiche métier</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
   <main class="page">
-    <div class="container" id="app"></div>
+    <div class="container" id="app">Chargement…</div>
   </main>
 
   <script>
@@ -21,80 +20,129 @@
       .then(data => {
         const metier = data.find(m => m.SLUG === slug) || data[0];
 
+        function clamp(n, min, max) {
+          return Math.max(min, Math.min(max, Number(n)));
+        }
+
         function gauge(value, left, right, reverse = false) {
-          let pos = Math.max(0, Math.min(10, value)) * 10;
+          let pos = clamp(value, 0, 10) * 10;
           if (reverse) pos = 100 - pos;
 
           return `
-            <div class="gauge-block">
-              <div class="gauge-labels">
+            <div class="gauge-card">
+              <div class="gauge-top">
                 <span>${left}</span>
                 <span>${right}</span>
               </div>
-              <div class="gauge-bar">
-                <div class="gauge-fill"></div>
-                <div class="gauge-dot" style="left:${pos}%"></div>
+              <div class="gauge-line">
+                <div class="gauge-line-bg"></div>
+                <div class="gauge-cursor" style="left: calc(${pos}% - 10px);"></div>
               </div>
             </div>
           `;
         }
 
-        document.getElementById("app").innerHTML = `
-          
-          <section class="header">
-            <h1>${metier.METIER}</h1>
-            <p class="mini">${metier.DESCRIPTION_MINI}</p>
+        function youtubeEmbed(url) {
+          if (!url) return "";
+          try {
+            const u = new URL(url);
+            let id = u.searchParams.get("v");
+            if (!id && u.hostname.includes("youtu.be")) {
+              id = u.pathname.replace("/", "");
+            }
+            if (!id) return "";
+            return `<iframe src="https://www.youtube.com/embed/${id}" title="Vidéo YouTube" loading="lazy" allowfullscreen></iframe>`;
+          } catch {
+            return "";
+          }
+        }
 
-            <div class="illustration">
-              <img src="assets/metiers/${metier.IMAGE}" />
+        function flames(n) {
+          return "🔥".repeat(Number(n) || 0);
+        }
+
+        function demandLabel(n) {
+          const v = Number(n);
+          if (v >= 5) return "Très forte";
+          if (v >= 4) return "Forte";
+          if (v >= 3) return "Bonne";
+          if (v >= 2) return "Moyenne";
+          return "Faible";
+        }
+
+        document.getElementById("app").innerHTML = `
+          <section class="header-block">
+            <p class="eyebrow">Fiche métier</p>
+            <h1>${metier.METIER}</h1>
+            <p class="mini">${metier.DESCRIPTION_MINI || ""}</p>
+
+            <div class="illustration-wrap">
+              <img class="illustration" src="assets/metiers/${metier.IMAGE}" alt="${metier.METIER}">
             </div>
           </section>
 
-          <section class="card">
+          <section class="card section">
+            <h2>C’est quoi ce métier ?</h2>
             <p>${metier.DESCRIPTION_METIER}</p>
           </section>
 
-          <section class="card">
+          <section class="card section">
             <h2>Le métier en pratique</h2>
 
-            ${gauge(metier.INDIVIDUEL, "Individuel", "Collectif")}
-            <p>${metier.EXPLICATION_INDIVIDUEL}</p>
+            <div class="metric">
+              <h3>Travail</h3>
+              ${gauge(metier.INDIVIDUEL, "Individuel", "Collectif")}
+              <p>${metier.EXPLICATION_INDIVIDUEL}</p>
+            </div>
 
-            ${gauge(metier.LIBRE, "Libre", "Structuré")}
-            <p>${metier.EXPLICATION_LIBRE}</p>
+            <div class="metric">
+              <h3>Organisation</h3>
+              ${gauge(metier.LIBRE, "Libre", "Structurée")}
+              <p>${metier.EXPLICATION_LIBRE}</p>
+            </div>
 
-            ${gauge(metier.ROUTINIER, "Routinier", "Nouveauté", true)}
-            <p>${metier.EXPLICATION_ROUTINIER}</p>
+            <div class="metric">
+              <h3>Rythme</h3>
+              ${gauge(metier.ROUTINIER, "Routinier", "Nouveauté", true)}
+              <p>${metier.EXPLICATION_ROUTINIER}</p>
+            </div>
 
-            ${gauge(metier.TERRAIN, "Terrain", "Bureau", true)}
-            <p>${metier.EXPLICATION_TERRAIN}</p>
+            <div class="metric">
+              <h3>Environnement</h3>
+              ${gauge(metier.TERRAIN, "Terrain", "Bureau", true)}
+              <p>${metier.EXPLICATION_TERRAIN}</p>
+            </div>
           </section>
 
-          <section class="card">
-            <h2>Repères</h2>
+          <section class="card section">
+            <h2>Autres repères</h2>
 
             <div class="repere">
-              <strong>🎓 ${metier.DIPLOME}</strong>
+              <div class="repere-title">🎓 Diplôme</div>
+              <div class="repere-value">${metier.DIPLOME}</div>
               <p>${metier.EXPLICATION_DIPLOME}</p>
             </div>
 
             <div class="repere">
-              <strong>💰 ${"🔥".repeat(metier.SALAIRE)}</strong>
+              <div class="repere-title">💰 Salaire</div>
+              <div class="repere-value">${flames(metier.SALAIRE)}</div>
               <p>${metier.EXPLICATION_SALAIRE}</p>
             </div>
 
             <div class="repere">
-              <strong>📈 ${metier.DEMANDE}/5</strong>
+              <div class="repere-title">📈 Demande</div>
+              <div class="repere-value">${demandLabel(metier.DEMANDE)}</div>
               <p>${metier.EXPLICATION_DEMANDE}</p>
             </div>
 
             <div class="repere">
-              <strong>⚙️ ${metier.PENEBILITE}</strong>
+              <div class="repere-title">⚙️ Contraintes / pénibilité</div>
+              <div class="repere-value">${metier.PENEBILITE}</div>
               <p>${metier.EXPLICATION_PENEBILITE}</p>
             </div>
           </section>
 
-          <section class="card">
+          <section class="card section">
             <h2>Qualités utiles</h2>
             <div class="skills">
               <span>${metier.QUALITE1}</span>
@@ -103,10 +151,20 @@
             </div>
           </section>
 
-          <section class="card">
+          <section class="card section">
             <h2>Vidéos</h2>
-            ${metier.YOUTUBE1 ? `<iframe src="https://www.youtube.com/embed/${metier.YOUTUBE1.split("v=")[1]}"></iframe>` : ""}
-            ${metier.YOUTUBE2 ? `<iframe src="https://www.youtube.com/embed/${metier.YOUTUBE2.split("v=")[1]}"></iframe>` : ""}
+            <div class="videos">
+              ${youtubeEmbed(metier.YOUTUBE1)}
+              ${youtubeEmbed(metier.YOUTUBE2)}
+            </div>
+          </section>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("app").innerHTML = `
+          <section class="card section">
+            <h1>Erreur</h1>
+            <p>Impossible de charger les données.</p>
           </section>
         `;
       });
