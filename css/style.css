@@ -18,15 +18,12 @@ body {
 
 /* BLOCS */
 
-.section {
-  margin-bottom: 28px;
-}
-
 .card {
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
 }
 
 /* HERO */
@@ -35,100 +32,118 @@ body {
   background: transparent;
   box-shadow: none;
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .hero-copy {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
+/* IMAGE CORRIGÉE */
+
 .hero-image {
-  width: 100%;
+  text-align: center;
   overflow: hidden;
 }
 
 .hero-image img {
-  width: 100%;
-  max-width: 520px;
+  width: 80%;
+  max-width: 420px;
   display: block;
-  margin: 0 auto -20%;
+  margin: 0 auto -18%;
+}
+
+/* MOBILE : moins de vide */
+
+@media (max-width: 699px) {
+  .hero-image img {
+    width: 85%;
+    margin: 0 auto -12%;
+  }
 }
 
 /* TEXTES */
 
 h1 {
+  margin: 0 0 10px;
   font-size: 1.9rem;
-  margin: 0 0 8px;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 h2 {
+  margin: 0 0 16px;
   font-size: 1.2rem;
-  margin-bottom: 12px;
-  letter-spacing: 0.04em;
 }
 
 h3 {
+  margin: 0 0 8px;
   font-size: 0.95rem;
-  margin-bottom: 6px;
   text-transform: uppercase;
   color: #7b6f5d;
 }
 
 p {
-  line-height: 1.55;
-  margin-bottom: 14px;
+  margin: 0 0 16px;
+  line-height: 1.6;
 }
 
 .mini {
   color: #50493f;
-  margin-bottom: 10px;
 }
 
 /* JAUGES */
 
 .gauge-wrap {
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .gauge-labels {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #6a6154;
-  margin-bottom: 6px;
+  color: #5b5448;
 }
 
 .gauge {
   position: relative;
-  height: 20px;
-  margin-bottom: 8px;
+  height: 26px;
+  margin-bottom: 12px;
 }
 
 .gauge-track {
   position: absolute;
-  top: 6px;
+  top: 9px;
   left: 0;
   right: 0;
-  height: 8px;
+  height: 10px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #d9d2c4 0%, #f0b35b 50%, #e07a5f 100%);
+  background: linear-gradient(90deg, #d8d0c1 0%, #efb45d 50%, #de7d61 100%);
 }
 
 .gauge-marker {
   position: absolute;
-  top: 1px;
+  top: 3px;
   width: 18px;
-  height: 18px;
+  height: 20px;
   border-radius: 6px;
   background: #ffffff;
   border: 2px solid #2f2a24;
 }
 
+/* ESPACES ENTRE BLOCS */
+
+.section + .section {
+  margin-top: 8px;
+}
+
 /* REPÈRES */
 
-.repere {
-  margin-bottom: 18px;
+.repere + .repere {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #ece7de;
 }
 
 .repere-value {
@@ -147,7 +162,7 @@ p {
 .skills span {
   background: #f6ead9;
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   font-weight: 700;
 }
 
@@ -160,15 +175,7 @@ p {
 
 iframe {
   width: 100%;
-  min-height: 200px;
+  min-height: 220px;
   border-radius: 14px;
   border: 0;
-}
-
-/* DESKTOP */
-
-@media (min-width: 700px) {
-  .hero-image img {
-    margin: 0 auto -28%;
-  }
 }
