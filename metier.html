@@ -71,14 +71,19 @@
   return result;
 }
 
-        function demandLabel(n) {
-          const v = Number(n);
-          if (v >= 5) return "Très forte";
-          if (v >= 4) return "Forte";
-          if (v >= 3) return "Bonne";
-          if (v >= 2) return "Moyenne";
-          return "Faible";
-        }
+       function flames(n) {
+  const value = Number(n) || 0;
+  const full = Math.floor(value);
+  const half = value % 1 >= 0.5;
+
+  let result = "🔥".repeat(full);
+
+  if (half) {
+    result += "<span class='flame-half'>🔥</span>";
+  }
+
+  return result;
+}
 
         document.getElementById("app").innerHTML = `
           <section class="header-block">
@@ -141,7 +146,7 @@
 
             <div class="repere">
               <div class="repere-title">📈 Demande</div>
-              <div class="repere-value">${demandLabel(metier.DEMANDE)}</div>
+              <div class="repere-value">${flames(metier.DEMANDE)}</div>
               <p>${metier.EXPLICATION_DEMANDE}</p>
             </div>
 
