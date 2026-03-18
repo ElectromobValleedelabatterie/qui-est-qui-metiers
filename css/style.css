@@ -16,93 +16,160 @@ body {
   margin: 0 auto;
 }
 
-/* HEADER */
+/* HAUT DE PAGE */
 
-.header {
-  margin-bottom: 20px;
+.header-block {
+  margin-bottom: 12px;
 }
 
-.header h1 {
-  font-size: 1.9rem;
-  margin-bottom: 8px;
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7b6f5d;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  line-height: 1.08;
 }
 
 .mini {
-  color: #555;
-  margin-bottom: 16px;
+  margin: 0 0 14px;
+  color: #50493f;
+  line-height: 1.45;
+  font-size: 1rem;
 }
 
-/* IMAGE (traitée comme illustration, pas hero) */
+/* IMAGE
+   On ne rogne pas l'image.
+   On réduit juste l'espace après grâce à une marge négative du conteneur.
+*/
+
+.illustration-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 -84px;
+  pointer-events: none;
+}
 
 .illustration {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.illustration img {
-  width: 70%;
-  max-width: 380px;
+  width: 78%;
+  max-width: 390px;
   height: auto;
+  display: block;
 }
 
 /* BLOCS */
 
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 18px;
+.section {
   margin-bottom: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 h2 {
-  margin-bottom: 14px;
-  font-size: 1.2rem;
+  margin: 0 0 14px;
+  font-size: 1.22rem;
+  line-height: 1.2;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7b6f5d;
+}
+
+p {
+  margin: 0 0 16px;
+  line-height: 1.58;
 }
 
 /* JAUGES */
 
-.gauge-block {
+.metric + .metric {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #ece7de;
+}
+
+.gauge-card {
   margin-bottom: 10px;
 }
 
-.gauge-labels {
+.gauge-top {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.84rem;
   font-weight: 700;
-  margin-bottom: 6px;
-  color: #6a6154;
+  color: #5b5448;
 }
 
-.gauge-bar {
+.gauge-top span:first-child {
+  text-align: left;
+}
+
+.gauge-top span:last-child {
+  text-align: right;
+}
+
+.gauge-line {
   position: relative;
+  height: 28px;
+}
+
+.gauge-line-bg {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
   height: 10px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #d8d0c1, #efb45d, #de7d61);
-  margin-bottom: 10px;
+  background: linear-gradient(90deg, #d8d0c1 0%, #efb45d 50%, #de7d61 100%);
 }
 
-.gauge-dot {
+.gauge-cursor {
   position: absolute;
-  top: -4px;
-  width: 16px;
-  height: 16px;
-  background: white;
-  border: 2px solid #333;
-  border-radius: 50%;
-  transform: translateX(-50%);
+  top: 2px;
+  width: 20px;
+  height: 24px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 2px solid #2f2a24;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
-/* REPÈRES */
+/* REPERES */
 
-.repere {
-  margin-bottom: 16px;
+.repere + .repere {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #ece7de;
 }
 
-.repere strong {
-  display: block;
-  margin-bottom: 4px;
+.repere-title {
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #7b6f5d;
+}
+
+.repere-value {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 /* SKILLS */
@@ -115,25 +182,43 @@ h2 {
 
 .skills span {
   background: #f6ead9;
-  padding: 8px 12px;
   border-radius: 999px;
+  padding: 10px 14px;
   font-weight: 700;
 }
 
 /* VIDEOS */
 
+.videos {
+  display: grid;
+  gap: 14px;
+}
+
 iframe {
   width: 100%;
-  min-height: 200px;
-  border-radius: 12px;
+  min-height: 220px;
   border: 0;
-  margin-bottom: 10px;
+  border-radius: 16px;
+  background: #ddd;
 }
 
 /* MOBILE */
 
-@media (max-width: 600px) {
-  .illustration img {
-    width: 85%;
+@media (max-width: 699px) {
+  .illustration-wrap {
+    margin: 6px 0 -58px;
+  }
+
+  .illustration {
+    width: 84%;
+    max-width: 360px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    padding: 16px;
   }
 }
