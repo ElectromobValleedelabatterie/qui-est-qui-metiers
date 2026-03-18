@@ -229,4 +229,11 @@ iframe {
   .illustration-frame {
     height: 300px;
   }
+
+.euro-half {
+  font-size: 0.7em;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+  
 }
