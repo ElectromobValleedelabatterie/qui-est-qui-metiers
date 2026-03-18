@@ -1,0 +1,29 @@
+name: Convert CSV to JSON
+
+on:
+  push:
+    paths:
+      - 'data/metiers.csv'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install csvtojson
+        run: npm install -g csvtojson
+
+      - name: Convert CSV to JSON
+        run: |
+          csvtojson data/metiers.csv > data/metiers.json
+
+      - name: Commit JSON
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/metiers.json
+          git commit -m "update JSON from CSV" || echo "no changes"
+          git push
