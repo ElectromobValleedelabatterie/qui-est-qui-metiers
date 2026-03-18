@@ -57,9 +57,19 @@
           }
         }
 
-        function flames(n) {
-          return "🔥".repeat(Number(n) || 0);
-        }
+       function euros(n) {
+  const value = Number(n) || 0;
+  const full = Math.floor(value);
+  const half = value % 1 >= 0.5;
+
+  let result = "€".repeat(full);
+
+  if (half) {
+    result += "<span class='euro-half'>€</span>";
+  }
+
+  return result;
+}
 
         function demandLabel(n) {
           const v = Number(n);
@@ -125,7 +135,7 @@
 
             <div class="repere">
               <div class="repere-title">💰 Salaire</div>
-              <div class="repere-value">${flames(metier.SALAIRE)}</div>
+              <div class="repere-value">${euros(metier.SALAIRE)}</div>
               <p>${metier.EXPLICATION_SALAIRE}</p>
             </div>
 
