@@ -196,7 +196,7 @@ p {
 
 iframe {
   width: 100%;
-  min-height: 220px;
+  min-height: 280px;
   border: 0;
   border-radius: 16px;
   background: #ddd;
@@ -209,6 +209,7 @@ iframe {
     height: 240px;
   }
 
+  
   .illustration {
     width: 84%;
     max-width: 360px;
@@ -230,6 +231,13 @@ iframe {
     height: 300px;
   }
 
+@media (min-width: 700px) {
+  iframe {
+    min-height: 340px;
+  }
+}
+
+  
 .euro-half {
   font-size: 0.7em;
   opacity: 0.7;
